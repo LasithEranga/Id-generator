@@ -1,4 +1,4 @@
-import { Box, Button, Grid, TextField } from "@mui/material";
+import { Box, Button, Grid, IconButton, TextField } from "@mui/material";
 import "./App.css";
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
 import { useEffect, useRef, useState } from "react";
@@ -6,6 +6,7 @@ import { fabric } from "fabric";
 import idBack from "./assets/idBack.jpg";
 import Papa from "papaparse";
 import JSZip from "jszip";
+import { Delete, DesignServices, Rule } from "@mui/icons-material";
 
 function App() {
   const { editor, onReady } = useFabricJSEditor();
@@ -220,14 +221,14 @@ function App() {
                 />
               </Box>
               <Button variant="contained" onClick={onAddText}>
-                Text
+                Add Text
               </Button>
-              <Button variant="contained" onClick={onAddLine}>
-                Line
-              </Button>
-              <Button variant="contained" onClick={onDelete}>
-                Delete
-              </Button>
+              <IconButton onClick={onAddLine} color="primary">
+                <DesignServices />
+              </IconButton>
+              <IconButton onClick={onDelete} color="primary">
+                <Delete />
+              </IconButton>
             </Box>
 
             <Box
@@ -239,15 +240,16 @@ function App() {
               alignItems={"center"}
               border={"1px solid #fff"}
             >
-              <Button onClick={handleUploadClick}>{fileName}</Button>
               <Button variant="text" onClick={generateAndDownloadSample}>
                 Dowload Sample CSV
               </Button>
+              <Button onClick={handleUploadClick}>{fileName}</Button>
             </Box>
             <Box
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
+              gap={2}
             >
               <Button variant="outlined" onClick={onClickChangeBackground}>
                 Change Background
