@@ -41,6 +41,16 @@ function App() {
     setTextFieldId("");
   };
 
+  const onAddLine = () => {
+    const canvasHeight = editor.canvas.height;
+    editor.canvas.add(
+      new fabric.Line([50, 0, 50, canvasHeight], {
+        stroke: "black",
+      })
+    );
+    editor.canvas.renderAll();
+  };
+
   const onDelete = () => {
     editor.deleteSelected();
     editor.canvas.renderAll();
@@ -210,7 +220,10 @@ function App() {
                 />
               </Box>
               <Button variant="contained" onClick={onAddText}>
-                Add Text
+                Text
+              </Button>
+              <Button variant="contained" onClick={onAddLine}>
+                Line
               </Button>
               <Button variant="contained" onClick={onDelete}>
                 Delete
